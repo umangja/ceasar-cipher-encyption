@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="./Utils.js" type="text/javascript"></script>
+</head>
+
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=button] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+
+<body>
+	<div>
+		<h3>Rules: </h3>
+		<ul>
+			<li>A --> Z, B --> Y, C --> X, etc</li> <br>
+			<li>a --> z, b --> y, c --> x, etc</li> <br>
+	  		<li>Upper Case character Remains upper case</li> <br>
+	  		<li>Lower Case character Remains upper case</li> <br>
+	  		<li>Symbols and numbers remains same</li> <br>
+		</ol>
+	</div>
+	<br><br>
+	<div>
+		<form id="form1">
+		  Enter String :  
+		  <input type="text" name="stringToEncrypt" placeholder="Enter string to encrypt"><br><br>
+		  <input type="button" onclick="Encrypt()" value="Encrypt" > <br><br>
+		</form>
+	</div>
+
+	<div>
+		<h3> Encrypted Message is </h5>
+		<p id="ciphertext"></p>
+	</div>
+
+	<div>
+		<input type="button" onclick="Decrypt()" value="Decrypt" > <br><br>
+		<p id="originalText"></p>
+	</div>
+
+	<script>
+		function Encrypt() {
+		  var form = document.getElementById("form1");
+		  var plainText  = form.elements[0].value;
+		  var values = encryptionByCaesarCipher(plainText);
+		  var cipherText =  values.cipherText;
+
+		  var ciphertextHTML = document.getElementById("ciphertext");
+		  ciphertextHTML.innerHTML= cipherText;
+
+		  return ;
+		}
+
+
+		function Decrypt() {
+		  var cipherText  = document.getElementById("ciphertext").innerHTML;
+		  var values = decryptionByCaesarCipher(cipherText);
+		  var plainText =  values.plainText;
+
+		  var originalTextHTML = document.getElementById("originalText");
+		  originalTextHTML.innerHTML= plainText;
+
+		  return ;
+		}
+
+	</script>
+
+</body>
+</html>
