@@ -1,2 +1,2 @@
 # ceasar-cipher-encyption
-Encryption using ceasar cipher 
+Encryption using Atbash cipher 
